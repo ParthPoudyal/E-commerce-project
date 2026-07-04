@@ -1,16 +1,15 @@
 package database
 
 import (
-	"context"
-	"fmt"
-	"os"
-	"time"
 
-	"github.com/jackc/pgx/v5/pgxpool"
+	"os"
+	
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 
-func Connectdb() (*pgxpool.Pool, error) {
+func Connectdb() (*gorm.DB, error) {
 
 	dsn := os.Getenv("DB_DSN")
 
@@ -18,19 +17,19 @@ func Connectdb() (*pgxpool.Pool, error) {
 		return nil,&DBerror{message: "DB_DSN not set"}
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	pool, err := pgxpool.New(ctx, dsn)
-	if err != nil {
-		return nil,&DBerror{message: "Error Connecting to DB", cause: err}
+	db , err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil{ 
+		return nil , &DBerror{message: "Error connecting to the Database" , cause: err}
+	} 
+	
+	sqlDB, err := db.DB()
+	if err != nil{ 
+		return nil , err
 	}
 
-	if err = pool.Ping(ctx); err != nil {
-		return nil,&DBerror{message: "Unable to Ping DB", cause: err}
+	if err := sqlDB.Ping(); err != nil { 
+		return nil , &DBerror{message: "Cannot ping DB server", cause: err}
 	}
 
-	fmt.Println("DATABASE CONNECTED")
-
-	return pool , nil 
+	return db , nil 
 }
