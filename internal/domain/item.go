@@ -1,4 +1,5 @@
-package entitites
+package domain
+
 
 import (
 	"time"

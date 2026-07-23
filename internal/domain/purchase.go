@@ -1,4 +1,4 @@
-package entitites
+package domain
 
 import (
 	"time"
@@ -7,7 +7,7 @@ import (
 )
 
 // will keep track of who bought what
-type Purchases struct {
+type Purchase struct {
 	ID          uuid.UUID  `json:"id"`
 	UserID      uuid.UUIDs `json:"user_id"`
 	ItemID      uuid.UUID  `json:"item_id"`
