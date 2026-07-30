@@ -8,7 +8,7 @@ import (
 )
 
 type CartItem struct {
-	id      uuid.UUID
+	Id      uuid.UUID
 	ItemID  uuid.UUID
 	UserID  uuid.UUID
 	AddedAt time.Time
