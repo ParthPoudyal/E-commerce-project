@@ -26,7 +26,7 @@ type ItemRepo interface {
 	
 	// Search Items by Name
 	SearchItemByUser (name string , limit , offset int) ([]domain.Item, error)
-
+	
 	// to Update a Item
 	UpdateItem(item *domain.Item) error
 	
