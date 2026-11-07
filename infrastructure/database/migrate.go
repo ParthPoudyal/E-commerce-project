@@ -6,21 +6,22 @@ import (
 	"log"
 )
 
-func RunMigrations(db *gorm.DB) error{
-	
+func RunMigrations(db *gorm.DB) error {
 	log.Print("Running migrations...")
 	err := db.AutoMigrate(
-		&models.BidModel{}, 
-		&models.UserModel{}, 
-		&models.CartItemModel{},
+		&models.UserModel{},
+		&models.AuthCredentialModel{},
+		&models.CategoryModel{},
 		&models.ItemModel{},
+		&models.BidModel{},
+		&models.CartItemModel{},
+		&models.WishlistItemModel{},
 		&models.PurchaseModel{},
-		&models.UserModel{}, 
-		models.WishlistItemModel{}, 
-	) 
-	if err != nil{ 
+		&models.PaymentTransactionModel{},
+	)
+	if err != nil {
 		return err
-	}  
+	}
 	log.Println("migrations complete")
-	return  nil 
+	return nil
 }

@@ -7,29 +7,32 @@ import (
 
 type ItemRepo interface {
 	// Add Item to Item List
-	AddItem(item *domain.Item) error 
+	AddItem(item *domain.Item) error
 
-	// Find All Items 
-	ListAllItems (limit , offset int) ([]domain.Item , error)
-	
+	// Find All Items
+	ListAllItems(limit, offset int) ([]domain.Item, error)
+
 	// Find Items in Auction
-	FindAuctionItems (limit , offset int)([]domain.Item , error)
-	
-	// Find Available Items 
-	FindAvailableItems (limit , offset int)([]domain.Item , error)
-	
-	// Find Item 
-	FindItemByID (ID uuid.UUID) (*domain.Item , error)
+	FindAuctionItems(limit, offset int) ([]domain.Item, error)
 
-	// Find Items posted by User 
-	FindItemByUser (user uuid.UUID) ([]domain.Item , error)
-	
+	// Find Available Items
+	FindAvailableItems(limit, offset int) ([]domain.Item, error)
+
+	// Find Item
+	FindItemByID(ID uuid.UUID) (*domain.Item, error)
+
+	// Find Items posted by User
+	FindItemByUser(user uuid.UUID) ([]domain.Item, error)
+
 	// Search Items by Name
-	SearchItemByUser (name string , limit , offset int) ([]domain.Item, error)
-	
+	SearchItemByUser(name string, limit, offset int) ([]domain.Item, error)
+
+	// Find Items by Category
+	FindItemsByCategory(categoryID uuid.UUID, limit, offset int) ([]domain.Item, error)
+
 	// to Update a Item
 	UpdateItem(item *domain.Item) error
-	
-	// to Delete a Existing Item 
+
+	// to Delete a Existing Item
 	DeleteItem(id uuid.UUID) error
 }

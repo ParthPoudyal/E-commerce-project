@@ -10,6 +10,12 @@ type RemoveFromCartService struct {
 	cartRepo cart.CartRepo
 }
 
+func NewRemoveFromCartService(cartRepo cart.CartRepo) *RemoveFromCartService {
+	return &RemoveFromCartService{
+		cartRepo: cartRepo,
+	}
+}
+
 func (cs *RemoveFromCartService) Execute(userID, itemID uuid.UUID) error {
 	itm, err := cs.cartRepo.FindItemInCart(userID, itemID)
 	if err != nil {

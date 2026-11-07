@@ -25,7 +25,7 @@ func (bn *BuyNowService) Execute(itemID, buyerID uuid.UUID, price float64) (*dom
 	if err != nil {
 		return nil, domain.ErrItemNotFound
 	}
-	if it.Status != domain.AVAILABE {
+	if it.Status != domain.AVAILABLE {
 		return nil, domain.ErrItemNotAvailable
 	}
 	if it.PostedBy.ID == buyerID {

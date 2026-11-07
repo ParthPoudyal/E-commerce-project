@@ -11,7 +11,7 @@ type ItemStatus string
 
 const (
 	UNAVAILABLE ItemStatus = "unavailable"
-	AVAILABE    ItemStatus = "available"
+	AVAILABLE   ItemStatus = "available"
 	SOLD        ItemStatus = "sold"
 	BIDDING     ItemStatus = "bidding" // for ongoing bidding
 )
@@ -21,6 +21,8 @@ type Item struct {
 	ID          uuid.UUID       `json:"id"`
 	Name        string          `json:"name"`
 	Description string          `json:"description"`
+	CategoryID  *uuid.UUID      `json:"category_id,omitempty"`
+	ImageURL    string          `json:"image_url"`
 	PostedBy    *User           `json:"posted_by"` // * : use foreign key in the model
 	Price       decimal.Decimal `json:"price"`
 	Status      ItemStatus      `json:"status"`

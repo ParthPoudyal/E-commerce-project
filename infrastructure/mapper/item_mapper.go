@@ -12,7 +12,7 @@ func ToItemStatusDomain(status models.ItemStatus) domain.ItemStatus {
 	case models.StatusUnavailable:
 		return domain.UNAVAILABLE
 	case models.StatusAvailable:
-		return domain.AVAILABE
+		return domain.AVAILABLE
 	case models.StatusSold:
 		return domain.SOLD
 	case models.StatusBidding:
@@ -26,7 +26,7 @@ func ToItemStatusModel(status domain.ItemStatus) models.ItemStatus {
 	switch status {
 	case domain.UNAVAILABLE:
 		return models.StatusUnavailable
-	case domain.AVAILABE:
+	case domain.AVAILABLE:
 		return models.StatusAvailable
 	case domain.SOLD:
 		return models.StatusSold
@@ -46,6 +46,8 @@ func ToItemDomain(model *models.ItemModel, postedBy *domain.User) *domain.Item {
 		ID:          model.ID,
 		Name:        model.Name,
 		Description: model.Description,
+		CategoryID:  model.CategoryID,
+		ImageURL:    model.ImageURL,
 		PostedBy:    postedBy,
 		Price:       model.Price,
 		Status:      ToItemStatusDomain(model.Status),
@@ -77,6 +79,8 @@ func ToItemModel(entity *domain.Item) *models.ItemModel {
 		ID:          entity.ID,
 		Name:        entity.Name,
 		Description: entity.Description,
+		CategoryID:  entity.CategoryID,
+		ImageURL:    entity.ImageURL,
 		PostedByID:  postedByID,
 		Price:       entity.Price,
 		Status:      ToItemStatusModel(entity.Status),

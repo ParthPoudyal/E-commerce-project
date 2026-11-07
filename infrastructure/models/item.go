@@ -19,6 +19,8 @@ type ItemModel struct {
 	ID          uuid.UUID `gorm:"type:uuid;primaryKey;default:gen_random_uuid()"`
 	Name        string    `gorm:"not null"`
 	Description string
+	CategoryID  *uuid.UUID      `gorm:"type:uuid;index"`
+	ImageURL    string          `gorm:"type:text"`
 	PostedByID  uuid.UUID       `gorm:"type:uuid;not null;index"`
 	Price       decimal.Decimal `gorm:"type:numeric(12,2);not null"`
 	Status      ItemStatus      `gorm:"type:varchar(20);not null;default:'available'"`

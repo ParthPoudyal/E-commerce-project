@@ -43,5 +43,13 @@ var (
 	ErrBidTooLow              = errors.New("bid amount must exceed current highest bid")
 	ErrBidBelowStartingPrice  = errors.New("bid amount is below starting price")
 
-	
+	// category errors
+	ErrCategoryNotFound       = errors.New("category not found")
+	ErrCategorySlugExists     = errors.New("category slug already exists")
+
+	// payment errors
+	ErrPaymentNotFound         = errors.New("payment not found")
+	ErrPaymentAlreadyCompleted = errors.New("payment has already been completed")
+	ErrPaymentFailed           = errors.New("payment verification failed")
+	ErrInvalidPaymentAmount    = errors.New("payment amount does not match")
 )

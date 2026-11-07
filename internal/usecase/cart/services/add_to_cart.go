@@ -25,7 +25,7 @@ func (cs *AddtoCartService) Execute(userID, itemID uuid.UUID) (*domain.CartItem,
 	if err != nil {
 		return nil, domain.ErrItemNotFound
 	}
-	if it.Status != domain.AVAILABE {
+	if it.Status != domain.AVAILABLE {
 		return nil, domain.ErrItemNotAvailable
 	}
 
