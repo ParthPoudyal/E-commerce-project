@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-studio: #F9F9F6;
+    --ink-studio: #141413;
+    --border-studio: #E4E4DC;
+  }
+
+  body {
+    background-color: var(--bg-studio);
+    color: var(--ink-studio);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Newsreader', 'Playfair Display', Georgia, serif;
+  }
+
+  code, pre, .font-mono, .tabular-nums {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Studio Architectural Hairline Rules */
+.hairline-border {
+  border-color: #E4E4DC;
+}
+
+/* Studio Registration Mark corners */
+.registration-cross {
+  position: relative;
+}
+.registration-cross::before,
+.registration-cross::after {
+  content: '';
+  position: absolute;
+  background-color: #84847D;
+}
+.registration-cross::before {
+  top: -4px;
+  left: 0;
+  width: 1px;
+  height: 9px;
+}
+.registration-cross::after {
+  top: 0;
+  left: -4px;
+  width: 9px;
+  height: 1px;
+}
+
+/* Studio Ledger Ticker Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #F2F2EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4D4CA;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #84847D;
+}
+
+/* Studio Live Gavel Pulse */
+@keyframes studio-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.studio-live-dot {
+  animation: studio-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
